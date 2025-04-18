@@ -18,6 +18,24 @@ const createBike = async (req: Request, res: Response) => {
   }
 };
 
+const getBikes=async(req: Request, res: Response) => {
+  try {
+    const result = await bikeService.getBikes();
+    res.status(200).json({
+      success: true,
+      message: "Bikes fetched successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: "Failed to get bikes",
+      error: error instanceof Error ? error.message : "An unknown error occurred",
+    })
+  }
+}
+
 export const bikeController = {
   createBike,
+  getBikes,
 };

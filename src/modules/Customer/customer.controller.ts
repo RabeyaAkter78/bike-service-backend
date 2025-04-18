@@ -79,7 +79,7 @@ const deleteCUstomer = async (req: Request, res: Response) => {
     res.status(200).json({
       success: true,
       message: "Customer deleted successfully",
-      data: result,
+
     });
   } catch (error) {
     res.status(400).json({

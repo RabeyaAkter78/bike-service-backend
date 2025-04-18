@@ -23,6 +23,7 @@ app.delete("/api/customers/:id",customerRoute);
 
 
 app.post("/api/bikes",bikeRoute);
+app.get("/api/bikes",bikeRoute);
 
 
  export default app;

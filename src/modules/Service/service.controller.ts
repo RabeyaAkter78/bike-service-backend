@@ -18,7 +18,24 @@ const createServiceRecord = async (req: Request, res: Response) => {
   }
 };
 
+const getAllService = async (req: Request, res: Response) => {
+  try {
+    const result = await serviceService.getAllService();
+    res.status(200).json({
+      success: true,
+      message: "Service record fetched successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: "Failed to get service record",
+      error: error,
+    });
+  }
+};
 
 export const serviceController = {
   createServiceRecord,
+  getAllService
 };

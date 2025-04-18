@@ -20,6 +20,13 @@ const createServiceRecord = async (data: serviceRecord) => {
   return result;
 };
 
+
+const getAllService= async()=>{
+    const result = await prisma.serviceRecord.findMany({});
+    return result;
+}
+
 export const serviceService = {
   createServiceRecord,
+  getAllService
 };

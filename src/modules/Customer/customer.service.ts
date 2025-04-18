@@ -40,9 +40,20 @@ const updateCustomer = async (id: string, data: Customer) => {
   return result;
 };
 
+
+const deletCustomer=async(id:string)=>{
+  const result= await prisma.customer.delete({
+    where: {
+      customerId: id,
+    },
+  });
+  return result 
+}
+
 export const customerService = {
   createCustomer,
   getCustomers,
   getSIngleCustomer,
-  updateCustomer
+  updateCustomer,
+  deletCustomer
 };

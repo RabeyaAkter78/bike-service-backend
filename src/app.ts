@@ -19,7 +19,7 @@ app.post("/api/customers", customerRoute);
 app.get("/api/customers",customerRoute);
 app.get("/api/customers/:id",customerRoute);
 app.put("/api/customers/:id",customerRoute);
-// app.delete("/api/customers/:id");
+app.delete("/api/customers/:id",customerRoute);
 
 
 app.post("/api/bikes",bikeRoute);

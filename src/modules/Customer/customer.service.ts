@@ -26,7 +26,16 @@ const getSIngleCustomer = async (id: string) => {
     where: {
       customerId: id,
     },
+  });
+  return result;
+};
 
+const updateCustomer = async (id: string, data: Customer) => {
+  const result = await prisma.customer.update({
+    where: {
+      customerId: id,
+    },
+    data: data,
   });
   return result;
 };
@@ -35,4 +44,5 @@ export const customerService = {
   createCustomer,
   getCustomers,
   getSIngleCustomer,
+  updateCustomer
 };

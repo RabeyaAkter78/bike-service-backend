@@ -20,13 +20,33 @@ const createServiceRecord = async (data: serviceRecord) => {
   return result;
 };
 
+const getAllService = async () => {
+  const result = await prisma.serviceRecord.findMany({});
+  return result;
+};
 
-const getAllService= async()=>{
-    const result = await prisma.serviceRecord.findMany({});
-    return result;
-}
+const getSingleService = async (id: string) => {
+  const result = await prisma.serviceRecord.findUnique({
+    where: {
+      serviceId: id,
+    },
+  });
+  return result;
+};
+
+const updateServiceStatus = async (id: string, data: serviceRecord) => {
+  const result = await prisma.serviceRecord.update({
+    where: {
+      serviceId: id,
+    },
+    data: data,
+  });
+  return result;
+};
 
 export const serviceService = {
   createServiceRecord,
-  getAllService
+  getAllService,
+  getSingleService,
+  updateServiceStatus,
 };

@@ -27,5 +27,7 @@ app.get("/api/bikes/:id", bikeRoute);
 
 app.post("/api/services", serviceRoute);
 app.get("/api/services", serviceRoute);
+app.get("/api/services/:id", serviceRoute);
+app.put("/api/services/:id", serviceRoute);
 
 export default app;

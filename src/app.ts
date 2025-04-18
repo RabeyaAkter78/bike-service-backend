@@ -29,5 +29,6 @@ app.post("/api/services", serviceRoute);
 app.get("/api/services", serviceRoute);
 app.get("/api/services/:id", serviceRoute);
 app.put("/api/services/:id", serviceRoute);
+app.get("/api/services/status", serviceRoute);
 
 export default app;

@@ -78,9 +78,27 @@ const updateServiceStatus = async (req: Request, res: Response) => {
   }
 };
 
+const getOverdueStatus = async (req: Request, res: Response) => {
+  try {
+    const result = await serviceService.getOverdueService();
+    res.status(200).json({
+      success: true,
+      message: "Overdue or pending services fetched successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: "Failed to get service record",
+      error: error,
+    });
+  }
+};
+
 export const serviceController = {
   createServiceRecord,
   getAllService,
   getSingleService,
   updateServiceStatus,
+  getOverdueStatus
 };

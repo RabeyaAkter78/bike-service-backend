@@ -1,31 +1,30 @@
 import express, { Application, Request, Response } from "express";
-import cors from "cors"
+import cors from "cors";
 import { customerRoute } from "./modules/Customer/customer.route";
 import { bikeRoute } from "./modules/Bike/bike.route";
+import { serviceRoute } from "./modules/Service/service.route";
 
-const app:Application=express();
+const app: Application = express();
 app.use(cors());
-app.use (express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.get("/",(req:Request,res:Response)=>{
-    res.send(({
-        Message:"Welcome to Bike Servicing Backend"
-    }))
+app.get("/", (req: Request, res: Response) => {
+  res.send({
+    Message: "Welcome to Bike Servicing Backend",
+  });
 });
 
-
 app.post("/api/customers", customerRoute);
-app.get("/api/customers",customerRoute);
-app.get("/api/customers/:id",customerRoute);
-app.put("/api/customers/:id",customerRoute);
-app.delete("/api/customers/:id",customerRoute);
+app.get("/api/customers", customerRoute);
+app.get("/api/customers/:id", customerRoute);
+app.put("/api/customers/:id", customerRoute);
+app.delete("/api/customers/:id", customerRoute);
 
+app.post("/api/bikes", bikeRoute);
+app.get("/api/bikes", bikeRoute);
+app.get("/api/bikes/:id", bikeRoute);
 
-app.post("/api/bikes",bikeRoute);
-app.get("/api/bikes",bikeRoute);
-app.get("/api/bikes/:id",bikeRoute);
+app.post("/api/services", serviceRoute);
 
-
-
- export default app;
+export default app;

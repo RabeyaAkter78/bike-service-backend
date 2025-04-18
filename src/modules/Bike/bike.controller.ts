@@ -33,9 +33,28 @@ const getBikes=async(req: Request, res: Response) => {
       error: error instanceof Error ? error.message : "An unknown error occurred",
     })
   }
+};
+
+const getSingleBike=async(req: Request, res: Response) => {
+  try {
+    const result= await bikeService.getSingleBike(req.params.id);
+    res.status(200).json({
+      success: true,
+      message: "Bike fetched successfully",
+      data: result,
+    });
+    
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: "Failed to get bike",
+      error: error instanceof Error ? error.message : "An unknown error occurred",
+    })
+  }
 }
 
 export const bikeController = {
   createBike,
   getBikes,
+  getSingleBike
 };

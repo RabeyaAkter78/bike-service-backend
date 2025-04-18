@@ -17,7 +17,7 @@ app.get("/",(req:Request,res:Response)=>{
 
 app.post("/api/customers", customerRoute);
 app.get("/api/customers",customerRoute);
-// app.get("/api/customers/:id");
+app.get("/api/customers/:id",customerRoute);
 // app.put("/api/customers/:id");
 // app.delete("/api/customers/:id");
 

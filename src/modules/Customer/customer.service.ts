@@ -1,7 +1,7 @@
 import { get } from "http";
 import { Customer, PrismaClient } from "../../../generated/prisma";
 
-const prisma=new PrismaClient();
+const prisma = new PrismaClient();
 
 const createCustomer = async (data: Customer) => {
   const customerData = {
@@ -10,20 +10,29 @@ const createCustomer = async (data: Customer) => {
     phone: data.phone,
   };
 
-  const result= await prisma.customer.create({
-    data: customerData
-  })
-  return result
+  const result = await prisma.customer.create({
+    data: customerData,
+  });
+  return result;
 };
 
-
-const getCustomers=async()=>{
+const getCustomers = async () => {
   const result = await prisma.customer.findMany();
   return result;
-}
+};
 
+const getSIngleCustomer = async (id: string) => {
+  const result = await prisma.customer.findUnique({
+    where: {
+      customerId: id,
+    },
+
+  });
+  return result;
+};
 
 export const customerService = {
   createCustomer,
-  getCustomers
+  getCustomers,
+  getSIngleCustomer,
 };

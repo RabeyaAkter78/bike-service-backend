@@ -1,8 +1,9 @@
-import { PrismaClient } from "../../../generated/prisma";
+import { get } from "http";
+import { Customer, PrismaClient } from "../../../generated/prisma";
 
 const prisma=new PrismaClient();
 
-const createCustomer = async (data: any) => {
+const createCustomer = async (data: Customer) => {
   const customerData = {
     name: data.name,
     email: data.email,
@@ -15,6 +16,14 @@ const createCustomer = async (data: any) => {
   return result
 };
 
+
+const getCustomers=async()=>{
+  const result = await prisma.customer.findMany();
+  return result;
+}
+
+
 export const customerService = {
   createCustomer,
+  getCustomers
 };
